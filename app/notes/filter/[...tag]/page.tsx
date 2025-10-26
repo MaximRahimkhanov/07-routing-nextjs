@@ -7,8 +7,7 @@ type Props = {
 
 export default async function FilteredNotesPage({ params }: Props) {
   const resolvedParams = await params;
-  const slug = resolvedParams.tag ?? [];
-  const tag = slug[0] ?? 'all';
+  const tag = resolvedParams.tag && resolvedParams.tag.length > 0 ? resolvedParams.tag[0] : 'all';
 
   const { notes } = await fetchNotes({
     searchText: '',
