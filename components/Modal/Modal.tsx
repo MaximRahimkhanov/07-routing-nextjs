@@ -6,7 +6,7 @@ import { useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface ModalProps {
-  onClose?: () => void;
+  onClose: () => void;
   children: React.ReactNode;
 }
 
