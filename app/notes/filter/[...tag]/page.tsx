@@ -1,6 +1,5 @@
 import { NoteList } from '@/components/NoteList/NoteList';
-import { fetchNoteByTag } from '@/lib/api';
-import { Note } from '@/types/note';
+import { fetchNotes } from '@/lib/api';
 
 type Props = {
   params: Promise<{ tag?: string[] }>;
@@ -9,7 +8,11 @@ type Props = {
 export default async function FilteredNotesPage({ params }: Props) {
   const resolvedParams = await params;
   const tag = resolvedParams.tag?.[0];
-  const notes: Note[] = await fetchNoteByTag(tag);
+  const { notes } = await fetchNotes({
+    searchText: '',
+    page: 1,
+    ...(tag && tag !== 'all' && { tag }),
+  });
 
   return (
     <div>

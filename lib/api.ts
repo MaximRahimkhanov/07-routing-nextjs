@@ -8,13 +8,24 @@ export type ResponseData = {
 
 const NEXT_PUBLIC_NOTEHUB_TOKEN = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN as string;
 
-export async function fetchNotes(
-  search: string,
-  page: number,
-  perPage: number
-): Promise<ResponseData> {
+export async function fetchNotes({
+  searchText = '',
+  page = 1,
+  perPage = 10,
+  tag,
+}: {
+  searchText?: string;
+  page?: number;
+  perPage?: number;
+  tag?: string;
+}): Promise<ResponseData> {
   const { data } = await axios.get<ResponseData>('https://notehub-public.goit.study/api/notes', {
-    params: { search, page, perPage },
+    params: {
+      search: searchText,
+      page,
+      perPage,
+      ...(tag && tag !== 'all' ? { tag } : {}),
+    },
     headers: {
       Authorization: `Bearer ${NEXT_PUBLIC_NOTEHUB_TOKEN}`,
     },
