@@ -1,6 +1,6 @@
 // app> notes>filter> layout.tsx
 
-import css from './Note.module.css';
+import css from './layout.module.css';
 
 type Props = {
   children: React.ReactNode;

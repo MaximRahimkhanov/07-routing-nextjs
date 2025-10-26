@@ -7,10 +7,10 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import Link from 'next/link';
 
 type NoteListProps = {
-  data: Note[];
+  notes: Note[];
 };
 
-export function NoteList({ data }: NoteListProps) {
+export function NoteList({ notes }: NoteListProps) {
   const queryClient = useQueryClient();
 
   const { mutate } = useMutation({
@@ -28,7 +28,7 @@ export function NoteList({ data }: NoteListProps) {
 
   return (
     <ul className={css.list}>
-      {data.map((note) => (
+      {notes.map((note) => (
         <li key={note.id} className={css.listItem}>
           <h2 className={css.title}>{note.title}</h2>
           <p className={css.content}>{note.content}</p>
