@@ -12,3 +12,6 @@ export interface NewNoteData {
   content: string;
   tag: string;
 }
+export interface Tag {
+  name: string;
+}
