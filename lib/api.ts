@@ -67,3 +67,26 @@ export async function fetchNoteById(noteId: string): Promise<Note> {
 
   return data;
 }
+
+// export async function fetchNoteByTag(tag?: string) {
+//   const { data } = await axios.get('https://notehub-public.goit.study/api/notes', {
+//     params: tag && tag !== 'all' ? { tag } : {},
+//     headers: {
+//       Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
+//       'Content-Type': 'application/json',
+//     },
+//   });
+
+//   return data.notes; // data.notes → масив Note[]
+// }
+
+export async function fetchNoteByTag(tag?: string): Promise<Note[]> {
+  const { data } = await axios.get(`https://notehub-public.goit.study/api/notes`, {
+    params: tag ? { tag } : {},
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
+    },
+  });
+
+  return data.notes;
+}

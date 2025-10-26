@@ -1,3 +1,5 @@
+'use client';
+
 import { deleteNote } from '@/lib/api';
 import type { Note } from '../../types/note';
 import css from './NoteList.module.css';

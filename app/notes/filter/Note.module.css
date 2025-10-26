@@ -29,3 +29,8 @@
 .button:hover {
   background-color: #0b5ed7;
 }
+.layout {
+  display: grid;
+  /* flex-direction: row; */
+  width: 100%;
+}
